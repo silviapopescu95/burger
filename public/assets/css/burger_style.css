@@ -1,5 +1,7 @@
 .jumbotron {
     text-align: center;
+    background-color: darkgoldenrod;
+    margin-top: 20px;
 }
 
 .burger-img {
@@ -7,4 +9,8 @@
     margin-left: auto;
     margin-right: auto;
     width: 40%;
+  }
+
+  body {
+      background-color: burlywood;
   }
