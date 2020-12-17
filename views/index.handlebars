@@ -1,0 +1,37 @@
+{{!-- set up this file to have the template that handlebars can render on to--}}
+{{!-- create a button that will submit the user input to the database --}}
+<div class="jumbotron">
+    <img class="burger-img" src="../public/assets/img/burger.png" alt="Burger Icon">
+  <h1 class="display-4">I Love Burgers!</h1>
+   <p>This is a simple application to help you keep track of what burgers you've eaten.</p>
+</div>
+
+<h2>Burgers I can't wait to eat!</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#unless devoured}}
+      <p>{{burger_name}}</p>>
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Burgers I already ate!</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if devoured}}
+      <p>{{burger_name}}</p>>
+    {{/if}}
+  {{/each}}
+</ul>
+
+
+
+<form action="/add" method="POST">
+  <div class="form-group">
+    {{!-- <label for="name">Name</label> --}}
+    <input class="form-control" name="burger-input" id="user-input" placeholder="Enter a burger you'd like to eat!">
+  </div>
+  <input type="submit">
+</form>
