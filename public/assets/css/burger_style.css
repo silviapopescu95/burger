@@ -1,0 +1,10 @@
+.jumbotron {
+    text-align: center;
+}
+
+.burger-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+  }
