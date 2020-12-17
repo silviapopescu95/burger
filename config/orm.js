@@ -1,9 +1,6 @@
-//import (require) connection.js into this file
-const { update } = require("../models/burger.js");
 var connection = require("./connection.js");
 
 var orm = {
-    // create selectAll() method
     all: function(tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, (err, result) => {
@@ -14,7 +11,6 @@ var orm = {
         });
     },
   
-    // create insertOne() method
     create: function(table, cols, values, cb) {
         queryString = "INSERT INTO " + table;
 
@@ -35,7 +31,7 @@ var orm = {
           cb(result);
         });
     },
-    // create updateOne() method
+    
     update: function(table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
     
@@ -52,8 +48,7 @@ var orm = {
     
           cb(result);
         });
-    },
+    }
 };
 
-// export  the ORM object
 module.exports = orm;
