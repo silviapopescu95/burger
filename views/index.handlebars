@@ -10,8 +10,11 @@
 
 <ul>
   {{#each burgers}}
-    {{#unless devoured}}
-      <p>{{burger_name}}</p>>
+    {{#unless this.devoured}}
+				<form class="new-burg">
+					<input role="textbox" value="{{burger_name}}">
+					<button type="submit" class="btn btn-light">Devour it!</button>
+				</form>
     {{/unless}}
   {{/each}}
 </ul>
@@ -22,16 +25,30 @@
   {{#each burgers}}
     {{#if devoured}}
       <p>{{burger_name}}</p>>
+      <input role="textbox" value="{{burger_name}}">
     {{/if}}
   {{/each}}
 </ul>
 
-
-
-<form action="/add" method="POST">
+{{!-- 
+<h2>Add a Burger</h2>
+<form class="create-form">
   <div class="form-group">
-    {{!-- <label for="name">Name</label> --}}
-    <input class="form-control" name="burger-input" id="user-input" placeholder="Enter a burger you'd like to eat!">
+    <label for="burg"></label>
+    <input type="text" id="burg" name="burger-name">
   </div>
-  <input type="submit">
-</form>
+  <button type="submit">Add burger</button>
+
+</form> --}}
+
+
+<div class="container">
+  <div class="row"></div>
+    <form action="/add" method="POST">
+      <div class="form-group input-form">
+        <input type="text" class="form-control" name="burger-input" value="" id="user-input" placeholder="Enter a burger you'd like to eat!">
+        <button type="submit" class="btn btn-light">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
