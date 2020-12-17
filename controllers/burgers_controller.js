@@ -8,7 +8,7 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 //Create routes
-router.get("/", (req, res) => {
+router.get("/", function(req, res) {
   burger.all(function(data) {
     var hbsObject = {
       burgers: data
@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
   });
 });
 
-router.post("/burgers", (req, res) => {
+router.post("/burgers", function(req, res) {
   burger.create([
     "burger_name", "devoured"
   ], 
@@ -31,7 +31,7 @@ router.post("/burgers", (req, res) => {
     });
 });
 
-router.put("/burgers/:id", (req, res) => {
+router.put("/burgers/:id", function(req, res) {
   var condition = "id = " + req.params.id;
   console.log("condition", condition);
 
