@@ -18,32 +18,32 @@ router.get("/", function(req, res) {
   });
 });
 
-router.post("/burgers", function(req, res) {
+router.post("/burgers/create", function(req, res) {
   burger.create([
     "burger_name", "devoured"
-  ], 
-  [
-    req.body.burger_name, req.body.devoured    
-  ],
-    function(result) {
-      // sends back the id of the new burger
-      res.json({ id: result.insertId });
-    });
+  ], [
+    req.body.burger_name, req.body.devoured
+  ], function(result) {
+    // Send back the ID of the new burger
+    // res.json({ id: result.insertId });
+    res.redirect("/");
+  });
 });
 
 router.put("/burgers/:id", function(req, res) {
   var condition = "id = " + req.params.id;
+
   console.log("condition", condition);
 
   burger.update({
-    devoured: req.body.devoured
+    devoured: req.body.sleepy
   }, condition, function(result) {
-      // error if no rows were changed, as id must not exist
-      if (result.changedRows == 0) {
-        return res.status(404).end();
-      } else {
-        res.status(200).end();  
-      }
+    if (result.changedRows == 0) {
+      // If no rows were changed, then the ID must not exist, so 404
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
   });
 });
 

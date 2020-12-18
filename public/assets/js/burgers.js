@@ -1,7 +1,7 @@
 // Makes sure the DOM is fully loaded.
 $(document).ready(function() {
     
-    $(".input-form").on("submit", function(event) {
+    $(".new-burg").on("submit", function(event) {
         //prevents default for submit events
         event.preventDefault();
 
@@ -9,8 +9,9 @@ $(document).ready(function() {
         console.log(newBurger);
 
         // Sends PUT request to add a new burger
-        $.ajax("/api/burgers/" + newBurger, {
-            method: "PUT"
+        $.ajax({
+            method: "POST",
+            url: "/burgers/" + newBurger 
         }).then(
             function() {
                 console.log("Created a new burger.");
@@ -19,27 +20,5 @@ $(document).ready(function() {
             }
         );
     });
-
-    $(".change-status").on("click", function(event) {
-        var id = $(this).data("id");
-        var newDevoured = $(this).data("newDevoured");
-
-        var newStatus = {
-            devoured: newDevoured
-        };
-
-        // Sends the PUT request
-        $.ajax("/burgers/" + id, {
-            type: "PUT",
-            data: newStatus
-        }).then(
-            function() {
-                console.log("Changed status to ", newDevoured);
-                // Reloads page for updated lists
-                location.reload();
-            }
-        )
-
-    })
 
 })
