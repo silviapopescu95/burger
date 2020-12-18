@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row"></div>
   <div class="jumbotron">
-    <img class="burger-img" src="../public/assets/img/burger.png" alt="Burger Icon">
+    <img src="/assets/img/burger.png" alt="Burger Icon">
   <h1 class="display-4">I Love Burgers!</h1>
    <p>This is a simple application to help you keep track of what burgers you've eaten.</p>
 </div>
@@ -14,9 +14,9 @@
     <h2>Burgers I can't wait to eat!</h2>
 <ul>
   {{#each burgers}}
-    {{#unless devoured}}
+    {{#unless this.devoured}}
 				<form class="new-burg">
-					<input role="textbox" id="user-input" value="{{burger_name}}">
+					<input role="textbox" id="user-input" value="{{this.burger_name}}">
 					<button type="submit" class="btn btn-light">Devour it!</button>
 				</form><br>
     {{/unless}}
@@ -31,9 +31,10 @@
     <h2>Burgers I already ate!</h2>
 <ul>
   {{#each burgers}}
-    {{#if devoured}}
-      <p>{{burger_name}}</p>>
-      <input role="textbox" value="{{burger_name}}">
+    {{#if this.devoured}}
+      <form class="new-burg-update">
+					<input role="textbox" id="" placeholder="{{this.burger_name}}">
+			</form><br>
     {{/if}}
   {{/each}}
 </ul>
@@ -46,9 +47,9 @@
 
 <div class="container">
   <div class="row"></div>
-    <form action="/add" method="POST">
+    <form action="/burgers/create" method="POST">
       <div class="form-group input-form">
-        <input type="text" class="form-control" name="burger-input" value="" id="user-input" placeholder="Enter a burger you'd like to eat!">
+        <input type="text" class="form-control col-md-6 text-center" name="burger_name" value="" placeholder="Enter a burger you'd like to eat!">
         <button type="submit" class="btn btn-light">Submit</button>
       </div>
     </form>
