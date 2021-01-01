@@ -12,8 +12,7 @@ $(document).ready(function() {
         $.ajax({
             method: "POST",
             url: "/burgers/" + newBurger 
-        }).then(
-            function() {
+        }).then(function(data) {
                 console.log("Created a new burger.");
                 // Reloads the page to update it
                 location.reload();
