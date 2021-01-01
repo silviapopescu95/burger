@@ -14,3 +14,7 @@ img {
   body {
       background-color: burlywood;
   }
+
+  #user-input {
+      width: 200px;
+  }
